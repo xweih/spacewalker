@@ -22,9 +22,8 @@ Each satellite repair takes 2 minutes to complete.
 
 The satellites must be repaired by specific times (all in Coordinated Universal Time (UTC)) to avoid system failures:
 
-Satellite 1: 12:19 AM
-
-Satellite 2: 12:19 AM
+- Satellite 1: 12:19 AM
+- Satellite 2: 12:19 AM
 Satellite 3: 12:25 AM
 Satellite 4: 12:30 AM
 Satellite 5: 12:20 AM
