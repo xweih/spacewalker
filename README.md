@@ -23,6 +23,7 @@ Each satellite repair takes 2 minutes to complete.
 The satellites must be repaired by specific times (all in Coordinated Universal Time (UTC)) to avoid system failures:
 
 Satellite 1: 12:19 AM
+
 Satellite 2: 12:19 AM
 Satellite 3: 12:25 AM
 Satellite 4: 12:30 AM
@@ -40,19 +41,9 @@ The goal is to schedule the astronauts’ spacewalks to minimize the total delay
 
 **Constraints:**
 
-Each spacewalk team can repair no more than 4 satellites per trip.
-Each satellite must be repaired exactly once across all spacewalks.
-Each spacewalk must start and end at the ISS.
-No two spacewalks can overlap; the astronauts must return to the ISS before starting the next spacewalk.
-Mapping to the Original Problem:
-Gates in the original problem are now satellites.
-Bags become satellite repair tasks.
-The bag runner is the astronaut spacewalk team.
-Departure times become the satellite system failure times.
-Unloading time (2 minutes) is now the time it takes to repair a satellite.
-The central bag room is the International Space Station (ISS).
+1. Each spacewalk team can repair no more than 4 satellites per trip.
+2. Each satellite must be repaired exactly once across all spacewalks.
+3. Each spacewalk must start and end at the ISS.
+4. No two spacewalks can overlap; the astronauts must return to the ISS before starting the next spacewalk.
 
-Unique Twist:
-This scenario takes you to outer space and involves astronauts performing critical spacewalks to save malfunctioning satellites. The urgency of preventing satellite system failures adds a high-stakes element, while the idea of scheduling spacewalks creates a vivid and exciting context that’s entirely different from delivery-based problems.
 
-Would you like to implement this spacewalk scheduling scenario using the MIP model we developed?
