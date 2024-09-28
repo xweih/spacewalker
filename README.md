@@ -43,4 +43,15 @@ The goal is to schedule the astronauts’ spacewalks to minimize the total delay
 3. Each spacewalk must start and end at the ISS.
 4. No two spacewalks can overlap; the astronauts must return to the ISS before starting the next spacewalk.
 
+## The Model
+
+**Indicies and Sets:**
+
+Locations: $S=\{0,..., N \}$, $s=\{1,..., N \}$
+
+Trips: $\Theta =\{0,..., K \}$, $\theta =\{1,..., K \}$
+
+Satellite: $i, j \in S$
+
+Trip: $k \in \Theta $ 
 
