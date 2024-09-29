@@ -83,7 +83,7 @@ $C_{k}$: the completion time of trip $k$ (when the astronaut returns to ISS from
 
 The problem can be modeled as the following MIP.
 
-$
+$$
 \begin{equation}
 \Delta A = 
 \begin{cases}
@@ -91,7 +91,7 @@ $
         0                                  & \text{if } a = 1
     \end{cases}                                                                                                 
 \end{equation}
-$
+$$
 
 $$
 \begin{align}
