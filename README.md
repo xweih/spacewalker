@@ -87,8 +87,8 @@ The problem can be modeled as the following MIP.
 
 $$
 \begin{align}
-	\text{minimize:}	& \text{maximize:} \\{0,\ u_{ik} - U + W - D_i \\} 			& \tag{B}\label{eq:b} \\    
-	\text{subject to:} 	& \sum_{j \in S} x_{ijk} = 1, 						& \forall i,k 	\\    
+	\text{minimize:}	& \text{maximize:} \\{0,\ u_{ik} - U + W - D_i \\} 			&  \\    
+	\text{subject to:} 	& \sum_{j \in S} x_{ijk} = 1, 						& \forall i,k \tag{1}\label{eq:b}	\\    
      				& \sum_{i \in S} x_{ijk} = 1,  						&\forall j,k  \\
     				& \sum_{k \in \Theta} y_{ik} = 1,  					&\forall i  \\
 				& \sum_{i \in S} y_{ik} \leq capacity,  				&\forall k   \\
