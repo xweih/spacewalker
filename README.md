@@ -84,6 +84,16 @@ $C_{k}$: the completion time of trip $k$ (when the astronaut returns to ISS from
 The problem can be modeled as the following MIP.
 
 $$
+\begin{empheq}[left={\Delta A =\empheqlbrace}]{equation}
+  \begin{aligned}
+      &\frac{\pi \left( 1-\mu \right) d_i^2}{42GW_c} & & \text{if } a = 0\\[1ex]
+      & 0 & & \text{if } a = 1
+  \end{aligned}
+\end{empheq}
+$$
+
+
+$$
 \begin{equation}
 \Delta A = 
 \begin{cases}
