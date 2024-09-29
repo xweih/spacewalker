@@ -54,6 +54,50 @@ Satellite: $i, j \in S$
 
 Trip: $k \in \Theta $ 
 
+**Parameters:**
+
+$A$: distance matrix
+
+$D_i$: failure time (deadline) for each satellite
+
+$W$: idle time required before faliure time is reached 
+
+$N$: total number of satellites
+
+$T$: time at which the astronaut team can start their spacewalks (12:00 AM, 0 minutes)
+ 
+$U$: repair time per satellite in minutes
+
+$capacity$: the number of satellites an astronaut can service in each trip
+
+
+**Decision variables:**
+
+$
+x_{ijk} = \left\{
+    \begin{array}\\
+        1 & \text{a walk from satellite } i \text{ to } j \text{ occurs in trip } k\\
+        0 & \text{otherwise} \\
+    \end{array}
+\right.
+$
+
+$
+y_{ik} = \left\{
+    \begin{array}\\
+        1 & \text{ satellite } i \text{ is serviced during trip } k,  \\
+        0 & \text{otherwise} \\
+    \end{array}
+\right.
+$
+
+$u_{ik} $: the starting time of repair work for satellite $i$ during trip $k$.
+
+$C_{k}$: the completion time of trip $k$ (when the astronaut returns to ISS from a trip).
+
+The problem can be modeled as the following MIP.
+
+
 $$
 \begin{align}
 \mbox{Union: } & A\cup B = \{x\mid x\in A \mbox{ or } x\in B\} \\
