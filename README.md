@@ -87,7 +87,7 @@ The problem can be modeled as the following MIP.
 
 $$
 \begin{align}
-	\text{minimize:}	& \text{maximize:} \\{0,\ u_{ik} - U + W - D_i \\} 			& \\label{eq1}\\\\    
+	\text{minimize:}	& \text{maximize:} \\{0,\ u_{ik} - U + W - D_i \\} 			& \\label{eq1} \\    
 	\text{subject to:} 	& \sum_{j \in S} x_{ijk} = 1, 						& \forall i,k 	\\    
      				& \sum_{i \in S} x_{ijk} = 1,  						&\forall j,k  \\
     				& \sum_{k \in \Theta} y_{ik} = 1,  					&\forall i  \\
