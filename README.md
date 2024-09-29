@@ -87,20 +87,20 @@ The problem can be modeled as the following MIP.
 
 $$
 \begin{align}
-	\text{Minimize:} \quad & \text{maximize}\{0,\ u_{ik} - U + W - D_i\} &\\    
-	\text{Subject to:} \quad & \sum_{j \in S} x_{ijk} = 1, \quad\qquad\qquad\qquad\qquad\quad & \forall i,k \label{eq1}\tag{1}\\    
-    & \sum_{i \in S} x_{ijk} = 1, \qquad\qquad\qquad &\forall j,k  \label{eq2}\tag{2}\\    
-    & \sum_{k \in \Theta} y_{ik} = 1, \qquad\qquad\qquad &\forall i  \label{eq3}\tag{3}\\
-	& \sum_{i \in S} y_{ik} \leq capacity, \quad\qquad &\forall k   \label{eq4}\tag{4}\\
-    & C_{0} = \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ij0} + U \sum_{i \in s} y_{i0} & \label{eq5}\tag{5}\\
-    & C_{k} = C_{k-1} + \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ijk} + U \sum_{i \in s} y_{ik}, \quad\qquad  &\forall k \in \theta \label{eq6}\tag{6}\\
-    & u_{ik} \geq 0, \quad\qquad &\forall i \in s, k \in \theta   \label{eq7}\tag{7}\\
-    & u_{ik} \leq M * y_{ik}, \quad\qquad & \forall i \in s, k \in \theta   \label{eq8}\tag{8}\\
-    & u_{i0} \geq y_{i0} * A_{ij}, & \forall i \in s,  \label{eq9}\tag{9}\\
-    & u_{ik} + U + A_{i0} \leq C_k, \quad\qquad & \forall i \in s, k \in \theta   \label{eq10}\tag{10}\\
-    & u_{ik} + M * (1- y_{ik}) \geq C_{k-1} +  A_{0,i}, \quad\qquad & \forall i \in s, k \in \theta   \label{eq11}\tag{11}\\
-    & u_{i0} + M * (1- y_{i0}) \geq A_{0,i}, \quad\qquad & \forall i \in s,   \label{eq12}\tag{12}\\
-    & u_{ik} + U + A_{ij} \leq u_{jk} + M * (1- x_{ijk}), \quad\qquad & \forall i,j \in s, k \in \theta   \label{eq13}\tag{13}\\
+	\text{Minimize:}	& \text{maximize}\{0,\ u_{ik} - U + W - D_i\} 				&\\    
+	\text{Subject to:} 	& \sum_{j \in S} x_{ijk} = 1, 						& \forall i,k \label{eq1}\tag{1}\\    
+    				& \sum_{i \in S} x_{ijk} = 1,  						&\forall j,k  \label{eq2}\tag{2}\\    
+    				& \sum_{k \in \Theta} y_{ik} = 1,  					&\forall i  \label{eq3}\tag{3}\\
+				& \sum_{i \in S} y_{ik} \leq capacity,  				&\forall k   \label{eq4}\tag{4}\\
+    				& C_{0} = \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ij0} + U \sum_{i \in s} y_{i0} & \label{eq5}\tag{5}\\
+   				& C_{k} = C_{k-1} + \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ijk} + U \sum_{i \in s} y_{ik},  &\forall k \in \theta \label{eq6}\tag{6}\\
+				& u_{ik} \geq 0, \quad\qquad &\forall i \in s, k \in \theta   \label{eq7}\tag{7}\\
+    				& u_{ik} \leq M * y_{ik}, \quad\qquad & \forall i \in s, k \in \theta   \label{eq8}\tag{8}\\
+    				& u_{i0} \geq y_{i0} * A_{ij}, & \forall i \in s,  \label{eq9}\tag{9}\\
+    				& u_{ik} + U + A_{i0} \leq C_k, \quad\qquad & \forall i \in s, k \in \theta   \label{eq10}\tag{10}\\
+    				& u_{ik} + M * (1- y_{ik}) \geq C_{k-1} +  A_{0,i}, \quad\qquad & \forall i \in s, k \in \theta   \label{eq11}\tag{11}\\
+    				& u_{i0} + M * (1- y_{i0}) \geq A_{0,i}, \quad\qquad & \forall i \in s,   \label{eq12}\tag{12}\\
+    				& u_{ik} + U + A_{ij} \leq u_{jk} + M * (1- x_{ijk}), \quad\qquad & \forall i,j \in s, k \in \theta   \label{eq13}\tag{13}\\
 \end{align}
 $$
 
