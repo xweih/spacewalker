@@ -79,7 +79,7 @@ $$
 \begin{equation}
 x_{ijk} = 
 \begin{cases}
-    1 & \text{if } a walk from satellite i to j occurs in trip k \\
+    1 & \text{if a walk from satellite i to j occurs in trip k} \\
     0 & \text{otherwise } 
     \end{cases}                                                                                                 
 \end{equation}
