@@ -87,7 +87,7 @@ The problem can be modeled as the following MIP.
 
 $$
 \begin{align}
-	\text{Minimize:}	& \text{maximize} \\{0,\ u_{ik} - U + W - D_i \\} 			&\label{eq2}\tag{2}\\    
+	\text{Minimize:}	& \text{maximize} \\{0,\ u_{ik} - U + W - D_i \\} 			&\label{eq2}\\    
 	\text{Subject to:} 	& \sum_{j \in S} x_{ijk} = 1, 						& \forall i,k 	\\    
 \end{align}
 $$
