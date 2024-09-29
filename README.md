@@ -77,67 +77,31 @@ $x_{ijk} \in$ {0,1}: 1, if a walk from satellite i to j occurs in trip k, and 0,
 
 $y_{ik} \in$ {0,1}: 1, if satellite i is visited in trip k, and 0, if not.  
 
-$$
-\begin{equation}
-x_{ijk} = 
-\begin{cases}
-    1 & \text{if a walk from satellite i to j occurs in trip k} \\
-    0 & \text{otherwise } 
-    \end{cases}                                                                                                 
-\end{equation}
-$$
-
-$$
-\begin{equation}
-y_{ik} = 
-\begin{cases}
-    1 & \text{if satellite i is visited in trip k} \\
-    0 & \text{otherwise } 
-    \end{cases}                                                                                                 
-\end{equation}
-$$
-
-$y_{ik} \in$ {0,1}:
-
 $u_{ik} $: the starting time of repair work for satellite $i$ during trip $k$.
 
 $C_{k}$: the completion time of trip $k$ (when the astronaut returns to ISS from a trip).
 
 The problem can be modeled as the following MIP.
 
-$$
-\begin{empheq}[left={\Delta A =\empheqlbrace}]{equation}
-  \begin{aligned}
-      &\frac{\pi \left( 1-\mu \right) d_i^2}{42GW_c} & & \text{if } a = 0\\[1ex]
-      & 0 & & \text{if } a = 1
-  \end{aligned}
-\end{empheq}
-$$
-
-
-$$
-\begin{equation}
-\Delta A = 
-\begin{cases}
-    \frac{\pi \left( 1-\mu \right) d_i^2}{42GW_c} & \text{if } a = 0\\
-        0                                  & \text{if } a = 1
-    \end{cases}                                                                                                 
-\end{equation}
-$$
+**The MILP model:**
 
 $$
 \begin{align}
-\mbox{Union: } & A\cup B = \{x\mid x\in A \mbox{ or } x\in B\} \\
-\mbox{Concatenation: } & A\circ B  = \{xy\mid x\in A \mbox{ and } y\in B\} \\
-\mbox{Star: } & A^\star  = \{x_1x_2\ldots x_k \mid  k\geq 0 \mbox{ and each } x_i\in A\} \\
+	\text{Minimize:} \quad & \text{maximize}\{0,\ u_{ik} - U + W - D_i\} &\\    
+	\text{Subject to:} \quad & \sum_{j \in S} x_{ijk} = 1, \quad\qquad\qquad\qquad\qquad\quad & \forall i,k \label{eq1}\tag{1}\\    
+    & \sum_{i \in S} x_{ijk} = 1, \qquad\qquad\qquad &\forall j,k  \label{eq2}\tag{2}\\    
+    & \sum_{k \in \Theta} y_{ik} = 1, \qquad\qquad\qquad &\forall i  \label{eq3}\tag{3}\\
+	& \sum_{i \in S} y_{ik} \leq capacity, \quad\qquad &\forall k   \label{eq4}\tag{4}\\
+    & C_{0} = \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ij0} + U \sum_{i \in s} y_{i0} & \label{eq5}\tag{5}\\
+    & C_{k} = C_{k-1} + \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ijk} + U \sum_{i \in s} y_{ik}, \quad\qquad  &\forall k \in \theta \label{eq6}\tag{6}\\
+    & u_{ik} \geq 0, \quad\qquad &\forall i \in s, k \in \theta   \label{eq7}\tag{7}\\
+    & u_{ik} \leq M * y_{ik}, \quad\qquad & \forall i \in s, k \in \theta   \label{eq8}\tag{8}\\
+    & u_{i0} \geq y_{i0} * A_{ij}, & \forall i \in s,  \label{eq9}\tag{9}\\
+    & u_{ik} + U + A_{i0} \leq C_k, \quad\qquad & \forall i \in s, k \in \theta   \label{eq10}\tag{10}\\
+    & u_{ik} + M * (1- y_{ik}) \geq C_{k-1} +  A_{0,i}, \quad\qquad & \forall i \in s, k \in \theta   \label{eq11}\tag{11}\\
+    & u_{i0} + M * (1- y_{i0}) \geq A_{0,i}, \quad\qquad & \forall i \in s,   \label{eq12}\tag{12}\\
+    & u_{ik} + U + A_{ij} \leq u_{jk} + M * (1- x_{ijk}), \quad\qquad & \forall i,j \in s, k \in \theta   \label{eq13}\tag{13}\\
 \end{align}
-$$
-
-$$
-\begin{align*} 
-2x - 5y &=  8 \\ 
-3x + 9y &=  -12
-\end{align*}
 $$
 
 
