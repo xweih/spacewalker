@@ -104,4 +104,34 @@ $$
 \end{align}
 $$
 
+## The Code
+
+The above mathematical model is encoded in Python Jupyter notebook with [CVXPY](https://www.cvxpy.org/) as the solver. Adding the following routine is necessary. 
+
+```javascript
+#!pip install --quiet geopy
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import networkx as nx
+import seaborn as sns
+import cvxpy as cp
+import math
+from scipy.spatial import distance_matrix
+# from geopy import distance # Library for geographical calculations
+```
+ 
+First, I preprocess the data, i.e., the KCS's menu pricing information and my required order that are contained in a few csv files. 
+
+```javascript
+df = pd.read_csv('input_ctsp/locations.csv')
+sns.scatterplot(data=df, x='X', y='Y'W)
+coords = df[['X','Y']].values  # returns a numpy array
+travel_times = distance_matrix(coords, coords)
+
+# Showing distance matrix
+print('Distance Matrix is:\n')
+print(np.round(travel_times, 4))
+```
 
