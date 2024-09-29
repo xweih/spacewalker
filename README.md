@@ -73,25 +73,9 @@ $capacity$: the number of satellites an astronaut can service in each trip
 
 **Decision variables:**
 
-$$
-\begin{align*} 
-x_{ijk} = \left \{
-    \begin{array}\\
-        1 & \text{a walk from satellite } i \text{ to } j \text{ occurs in trip } k\\
-        0 & \text{otherwise} \\
-    \end{array}
-\right.
-\end{align*} 
-$$
+$x_{ijk} \in$ {0,1}: 1, if a walk from satellite i to j occurs in trip k, and 0, if not.  
 
-$
-y_{ik} = \left\{
-    \begin{array}\\
-        1 & \text{ satellite } i \text{ is serviced during trip } k,  \\
-        0 & \text{otherwise} \\
-    \end{array}
-\right.
-$
+$y_{ik} \in$ {0,1}:
 
 $u_{ik} $: the starting time of repair work for satellite $i$ during trip $k$.
 
