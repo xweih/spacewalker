@@ -75,16 +75,9 @@ $capacity$: the number of satellites an astronaut can service in each trip
 
 $x_{ijk} \in$ {0,1}: 1, if a walk from satellite i to j occurs in trip k, and 0, if not.  
 
-$
-\begin{equation}
-x_{ijk} = 
-\begin{cases}
-    1 & \text{if a walk from satellite i to j occurs in trip k} \\
-    0 & \text{otherwise } 
-    \end{cases}                                                                                                 
-\end{equation}
-$
+$y_{ik} \in$ {0,1}: 1, if satellite i is visited in trip k, and 0, if not.  
 
+$$
 \begin{equation}
 x_{ijk} = 
 \begin{cases}
@@ -92,6 +85,17 @@ x_{ijk} =
     0 & \text{otherwise } 
     \end{cases}                                                                                                 
 \end{equation}
+$$
+
+$$
+\begin{equation}
+y_{ik} = 
+\begin{cases}
+    1 & \text{if satellite i is visited in trip k} \\
+    0 & \text{otherwise } 
+    \end{cases}                                                                                                 
+\end{equation}
+$$
 
 $y_{ik} \in$ {0,1}:
 
