@@ -134,4 +134,186 @@ travel_times = distance_matrix(coords, coords)
 print('Distance Matrix is:\n')
 print(np.round(travel_times, 4))
 ```
+Showing the location of the satellites. 
 
+<img src="images/spacewalker_locations.png" width="1000" >
+
+```javascript
+# Indices
+n_satels = len(df) - 1
+capacity = 4
+n_trips = math.ceil( n_satels / capacity)
+satellites = np.arange(1, n_satels + 1)
+
+# Parameters
+# Departure times in minutes after 12:00 AM
+#failure_times = np.array([19, 19, 25, 30, 20, 35, 17])  
+# failure_times = np.array([34, 34, 34, 34, 34, 34, 30]) 
+rng = np.random.default_rng(seed=12345)
+failure_times = rng.integers(19, 36, size =  n_satels)
+
+# Time at which the astronaut team can start their spacewalks (12:00 AM, 0 minutes)
+T = 0  
+
+# Repair time per satellite in minutes
+U = 2  
+
+M = 100000  # Big M
+
+################################################
+# Solving the integer programming problem
+################################################
+
+# Defining the decision variables
+
+# x_ijk: Binary variable for each trip, dim = 8*8*2
+x = [cp.Variable(( n_satels + 1,  n_satels + 1), boolean=True) for _ in range(n_trips)] 
+
+# u_ik: Start time of repair at satellite i during trip k, dim = 7*2
+u = cp.Variable(( n_satels, n_trips), nonneg=True)  
+
+# y_ik: Whether satellite i is serviced during trip k, dim = 7 *2
+y = cp.Variable(( n_satels, n_trips), boolean=True)  
+
+# Completion time of each trip
+C = cp.Variable(n_trips, nonneg=True)  
+
+# Objective function: Minimize total delay
+delay = cp.sum(cp.maximum(0, u + U - (failure_times.reshape(-1, 1) - 5)))
+objective = cp.Minimize(delay)
+
+
+# Constraints
+constraints = []
+
+# 0. Initial constraintsx_ii = 0 
+for k in range(n_trips):
+    constraints += [cp.diag(x[k]) == 0]
+
+# 1. Flow conservation
+for k in range(n_trips):
+    # Start at International Space Station (satellite 0) and must visit each assigned satellite once
+    constraints += [ cp.sum(x[k][0, 1:]) == 1 ]
+    constraints += [ cp.sum(x[k][1:, 0]) == 1 ]    
+    # Each satellite assigned to a trip must have exactly one preceding and one succeeding satellite
+    for i in range(1,  n_satels + 1):
+        constraints += [ cp.sum(x[k][i, :]) == y[i - 1, k] ]
+        constraints += [ cp.sum(x[k][:, i]) == y[i - 1, k] ]
+
+# 2. Assignment constraints: Each satellite must be served exactly once across all trips
+for i in range(n_satels):
+    constraints += [ cp.sum(y[i, :]) == 1 ]
+
+# 3. Spaceman capacity constraints: No more than 4 satellites in each trip
+for k in range(n_trips):
+    constraints += [ cp.sum(y[:, k]) <= capacity ]
+
+# 4. Definition of Completion Time, C[k]
+constraints += [ C[0] == 0 + cp.sum( cp.multiply(travel_times, x[0]) ) + U * cp.sum(y[:,0]) ]
+
+for k in range(1, n_trips):
+    constraints += [ C[k] == C[k-1] + cp.sum( cp.multiply(travel_times, x[k]) )  + U * cp.sum(y[:,k]) ]
+
+
+# 5. Repair starting time
+for k in range(n_trips):
+    constraints += [u[1:,k] >= 0]
+    # constraints += [u[1:,k] >= y[1:,k]]
+
+# If a satellite is NOT scheduled during a trip, its starting time remains 0
+# If it IS visited, then no constraint to repair starting time.
+for k in range(n_trips):
+    for i in range( n_satels):
+        constraints += [u[i,k] <= M * y[i,k] ] 
+        
+# for k in range(1, n_trips):
+#     for i in range( n_satels):
+#         constraints += [u[i,k] + M * (1-y[i,k]) >= C[k-1] ] 
+
+    
+# 6. Trip Sequencing Constraints (trips must be sequential in time: no overlapping)
+
+# for i in range(1,  n_satels+1):
+#     constraints += [ u[i-1, 0] >= 0 + y[i-1, 0] * travel_times[0, i] ]
+for i in range(n_satels):
+    constraints += [ u[i, 0] >= 0 + y[i, 0] * travel_times[0, i+1] ]
+
+# 7. Bounds of repair starting time, u[i,k]
+
+# 7.1 starting time must be smaller than the completion time of the same trip 
+for k in range(n_trips):
+    for i in range(n_satels):
+        constraints += [ u[i,k] + U + travel_times[i+1, 0] <= C[k] ]
+
+# 7.2 If a satellite is vited in a trip (k), its repiar starting time must be greater than the previous completion time.
+#     If NOT visited, however, no constraint is imposed to the starting time. 
+for k in range(1, n_trips):
+    for i in range( n_satels):
+        constraints += [ C[k-1] + travel_times[0, i+1] <= u[i,k] + M * (1 - y[i,k]) ]
+
+for i in range(n_satels):
+    constraints += [ travel_times[0, i+1] <= u[i,0] + M * (1-y[i,0]) ]
+
+# 8. Subtour elimination constraints
+for k in range(n_trips):
+    for i in range(1,  n_satels + 1):
+        for j in range(1,  n_satels + 1):
+            if i != j:
+                constraints += [u[i - 1, k] + U + travel_times[i, j] <= u[j - 1, k] + M * (1 - x[k][i, j]) ]
+
+# Solve the problem
+prob = cp.Problem(objective, constraints)
+prob.solve(verbose=False)
+```
+
+Display the results
+
+```javascript
+if y.value is not None:
+    print(f"Optimal total delay: {prob.value:.2f} minutes")
+    print()
+    print("Detailed satellite-repair assignments to trips:")
+    print()
+    
+    trip_routes = []
+    delayTable = np.zeros((n_satels, n_trips))
+    
+    for k in range(n_trips):
+        print(f"Trip {k + 1}:")
+        
+        # Extract the route for trip k based on x[k]
+        route = []
+        current_satellite = 0  # Start from the International Space Station (satellite 0)
+        
+        while True:
+            next_satellite = np.argmax(x[k].value[current_satellite, :])  # Find the next satellite
+            if next_satellite == 0:
+                break  # End the route when the truck returns to satellite 0 (ISS)
+            route.append(next_satellite)  # Add the gate to the route
+            current_satellite = next_satellite  # Move to the next satellite
+            
+        # Print the route in the order the satellites are visited
+        for satellite in route:
+            unload_time = u.value[satellite - 1, k] + U
+            delay = max(0, unload_time + U + 5 - failure_times[satellite - 1])
+            delayTable[satellite-1, k] = delay
+            print(f"Satellite {satellite} completes unloading: {unload_time:.2f} minutes after 12:00 AM, late by {delay:.1f} minutes.")
+        
+        #print(route)
+        excursion = route
+        excursion.insert(0,0)
+        excursion.append(0)
+        trip_routes.append(excursion)
+        #print(excursion)
+        #print(trip_routes)
+        print()
+        
+else:
+    print("No feasible solution found.")
+```
+
+Visualization
+
+<img src="images/spacewalker_routes.png" width="1000" >
+
+<img src="images/spacewalker_heatmap.png" width="1000" >
