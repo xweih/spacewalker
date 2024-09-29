@@ -87,8 +87,20 @@ The problem can be modeled as the following MIP.
 
 $$
 \begin{align}
-	\text{Minimize:}	& \text{maximize} \\{0,\ u_{ik} - U + W - D_i \\} 			&\tag{eq1}\\    
+	\text{Minimize:}	& \text{maximize} \\{0,\ u_{ik} - U + W - D_i \\} 			& \\    
 	\text{Subject to:} 	& \sum_{j \in S} x_{ijk} = 1, 						& \forall i,k 	\\    
+     				& \sum_{i \in S} x_{ijk} = 1,  						&\forall j,k  \\
+    				& \sum_{k \in \Theta} y_{ik} = 1,  					&\forall i  \\
+				& \sum_{i \in S} y_{ik} \leq capacity,  				&\forall k   \\
+    				& C_{0} = \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ij0} + U \sum_{i \in s} y_{i0} & \\
+   				& C_{k} = C_{k-1} + \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ijk} + U \sum_{i \in s} y_{ik},  &\forall k \in \theta \\
+				& u_{ik} \geq 0, \quad\qquad &\forall i \in s, k \in \theta   \\
+    				& u_{ik} \leq M * y_{ik}, \quad\qquad & \forall i \in s, k \in \theta   \\
+    				& u_{i0} \geq y_{i0} * A_{ij}, & \forall i \in s,  \\
+    				& u_{ik} + U + A_{i0} \leq C_k, \quad\qquad & \forall i \in s, k \in \theta   \\
+    				& u_{ik} + M * (1- y_{ik}) \geq C_{k-1} +  A_{0,i}, \quad\qquad & \forall i \in s, k \in \theta   \\
+    				& u_{i0} + M * (1- y_{i0}) \geq A_{0,i}, \quad\qquad & \forall i \in s,   \\
+    				& u_{ik} + U + A_{ij} \leq u_{jk} + M * (1- x_{ijk}), \quad\qquad & \forall i,j \in s, k \in \theta   \\
 \end{align}
 $$
 
