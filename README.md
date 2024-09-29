@@ -74,12 +74,14 @@ $capacity$: the number of satellites an astronaut can service in each trip
 **Decision variables:**
 
 $$
+\begin{align*} 
 x_{ijk} = \left\{
     \begin{array}\\
         1 & \text{a walk from satellite } i \text{ to } j \text{ occurs in trip } k\\
         0 & \text{otherwise} \\
     \end{array}
 \right.
+\end{align*} 
 $$
 
 $
