@@ -266,7 +266,9 @@ prob = cp.Problem(objective, constraints)
 prob.solve(verbose=False)
 ```
 
-Display the results
+## Post-processing
+
+Display the results from the solutions of the optimization problem. 
 
 ```javascript
 if y.value is not None:
@@ -311,6 +313,8 @@ if y.value is not None:
 else:
     print("No feasible solution found.")
 ```
+
+## Results
 
 After running the script, we are able to find at least one optimal solution, as follows.
 
