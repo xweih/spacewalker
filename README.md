@@ -335,7 +335,7 @@ Satellite 6 completes unloading: 32.61 minutes after 12:00 AM, late by 7.6 minut
 Satellite 7 completes unloading: 36.03 minutes after 12:00 AM, late by 14.0 minutes.
 ```
 
-Visualization
+## Visualization
 
 <img src="images/spacewalker_routes.png" width="1000" >
 
