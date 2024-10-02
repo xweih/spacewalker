@@ -312,6 +312,25 @@ else:
     print("No feasible solution found.")
 ```
 
+After running the script, we are able to find at least one optimal solution, as follows.
+
+```javascript
+Optimal total delay: 17.87 minutes
+
+Detailed satellite-repair assignments to trips:
+
+Trip 1:
+Satellite 2 completes unloading: 6.47 minutes after 12:00 AM, late by 0.0 minutes.
+Satellite 3 completes unloading: 9.89 minutes after 12:00 AM, late by 0.0 minutes.
+Satellite 4 completes unloading: 13.30 minutes after 12:00 AM, late by 0.0 minutes.
+Satellite 5 completes unloading: 16.71 minutes after 12:00 AM, late by 1.7 minutes.
+
+Trip 2:
+Satellite 1 completes unloading: 25.23 minutes after 12:00 AM, late by 2.2 minutes.
+Satellite 6 completes unloading: 32.61 minutes after 12:00 AM, late by 7.6 minutes.
+Satellite 7 completes unloading: 36.03 minutes after 12:00 AM, late by 14.0 minutes.
+```
+
 Visualization
 
 <img src="images/spacewalker_routes.png" width="1000" >
