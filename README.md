@@ -44,13 +44,6 @@ The goal is to schedule the astronauts’ spacewalks to minimize the total delay
 4. No two spacewalks can overlap; the astronauts must return to the ISS before starting the next spacewalk.
 
 
-$$
-\begin{align}
-	E = mc^2 \tag{Einstein's equation} \\
-	F = ma \tag{4}
-\end{align}
-$$
-
 ## The Model
 
 **Indicies and Sets:**
