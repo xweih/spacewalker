@@ -92,8 +92,8 @@ $$
 	\text{minimize:}	& \text{maximize} \\{0,\ u_{ik} - U + W - D_i \\} 			&  \\    
 	\text{subject to:} 	& \sum_{j \in s} x_{0jk} = 1, & \forall k \in \Theta \\
     				& \sum_{i \in s} x_{i0k} = 1,  &\forall k \in \Theta \\
-   				& \sum_{j \in s} x_{ijk} = y_{ik}, & \forall i \in s, k \in \\
-    				& \sum_{i \in s} x_{ijk} = y_{ik},  &\forall j \in s, k \in \\
+   				& \sum_{j \in s} x_{ijk} = y_{ik}, & \forall i \in s, k \in \Theta	\\
+    				& \sum_{i \in s} x_{ijk} = y_{ik},  &\forall j \in s, k \in \Theta	\\
     				& \sum_{k \in \Theta} y_{ik} = 1,  & \forall i \in s \\
 				& \sum_{i \in s} y_{ik} \leq capacity,  &\forall k \in \Theta  \\
     				& C_{0} = \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ij0} + U \sum_{i \in s} y_{i0} &  \\
