@@ -44,14 +44,14 @@ The goal is to schedule the astronauts’ spacewalks to minimize the total delay
 4. No two spacewalks can overlap; the astronauts must return to the ISS before starting the next spacewalk.
 
 \begin{gather}
-	E = mc^2 \tag{3} \\
-	F = ma \tag{4}
+	E = mc^2 \label{eq3}\tag{3} \\
+	F = ma \label{eq4}\tag{4}
 \end{gather}
 
 $$
 \begin{align*}
-	E = mc^2 \tag{3} \\
-	F = ma \tag{4}
+	E = mc^2 \label{eq3}\tag{3} \\
+	F = ma \label{eq4}\tag{4}
 \end{align*}
 $$
 
