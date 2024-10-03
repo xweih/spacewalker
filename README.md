@@ -43,6 +43,18 @@ The goal is to schedule the astronauts’ spacewalks to minimize the total delay
 3. Each spacewalk must start and end at the ISS.
 4. No two spacewalks can overlap; the astronauts must return to the ISS before starting the next spacewalk.
 
+\begin{gather}
+	E = mc^2 \tag{3} \\
+	F = ma \tag{4}
+\end{gather}
+
+$$
+\begin{gather}
+	E = mc^2 \tag{3} \\
+	F = ma \tag{4}
+\end{gather}
+$$
+
 ## The Model
 
 **Indicies and Sets:**
