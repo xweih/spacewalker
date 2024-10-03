@@ -47,8 +47,9 @@ The goal is to schedule the astronauts’ spacewalks to minimize the total delay
 
 **Indicies and Sets:**
 
-Locations: $S=\{0,..., N \}$, $s=\{1,..., N \}$
-Trips: $\Theta =\{0,..., K \}$, $\theta =\{1,..., K \}$
+Locations: $S=\\{0,..., N \\}$, $s=\\{1,..., N \\}$
+
+Trips: $\Theta =\\{1,..., K \\}$, $\theta =\\{2,..., K \\}$
 
 Satellite: $i, j \in S$
 
