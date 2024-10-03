@@ -46,7 +46,7 @@ The goal is to schedule the astronauts’ spacewalks to minimize the total delay
 
 $$
 \begin{align}
-	E = mc^2 \tag{3} \\
+	E = mc^2 \tag{Einstein's equation} \\
 	F = ma \tag{4}
 \end{align}
 $$
