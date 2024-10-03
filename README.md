@@ -49,10 +49,10 @@ The goal is to schedule the astronauts’ spacewalks to minimize the total delay
 \end{gather}
 
 $$
-\begin{gather}
+\begin{align*}
 	E = mc^2 \tag{3} \\
 	F = ma \tag{4}
-\end{gather}
+\end{align*}
 $$
 
 ## The Model
