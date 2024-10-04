@@ -21,13 +21,13 @@ However, spacewalks are extremely energy-consuming, and an astronaut team can on
 2. It takes 1 minute for the astronaut team to travel between adjacent satellites (or between the ISS and the first satellite).
 3. Each satellite repair takes 2 minutes to complete.
 4. The satellites must be repaired by specific times (all in Coordinated Universal Time (UTC)) to avoid system failures:
-- Satellite 1: 12:19 AM
-- Satellite 2: 12:19 AM
-- Satellite 3: 12:25 AM
-- Satellite 4: 12:30 AM
-- Satellite 5: 12:20 AM
-- Satellite 6: 12:35 AM
-- Satellite 7: 12:17 AM
+	- Satellite 1: 12:19 AM
+	- Satellite 2: 12:19 AM
+	- Satellite 3: 12:25 AM
+	- Satellite 4: 12:30 AM
+	- Satellite 5: 12:20 AM
+	- Satellite 6: 12:35 AM
+	- Satellite 7: 12:17 AM
 
 5. Each satellite repair must be completed at least 5 minutes before its system failure time.
 6. The astronaut team can start their spacewalks at 12:00 AM from the ISS.
