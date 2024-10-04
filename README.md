@@ -124,7 +124,7 @@ from scipy.spatial import distance_matrix
 # from geopy import distance # Library for geographical calculations
 ```
  
-First, I preprocess the data, i.e., the KCS's menu pricing information and my required order that are contained in a few csv files. 
+First, I preprocess the data, i.e., the satellites's locational information from a csv file. 
 
 ```javascript
 df = pd.read_csv('input_ctsp/locations.csv')
