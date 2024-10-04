@@ -4,10 +4,13 @@
 
 The quadratic formula is used to solve quadratic equations of the form ax² + bx + c = 0:
 
-$$\begin{equation}
-x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-\label{eq:quadratic}
-\end{equation}$$
+$$
+\begin{align}
+x + 2y + 3z &= 9 \tag{4.1} \\
+4x + 5y + 6z &= 24 \tag{4.2} \\
+7x + 8y + 9z &= 39 \tag{4.3}
+\end{align}
+$$
 
 ## Pythagorean Theorem
 
