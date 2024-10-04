@@ -89,20 +89,20 @@ The problem can be modeled as the following MIP.
 
 $$
 \begin{align}
-	\text{minimize:}	& \text{maximize} \\{0,\ u_{ik} - U + W - D_i \\} 			&	& (*) \\    
-	\text{subject to:} 	& \sum_{j \in s} x_{0jk} = 1, & \forall k \in \Theta 	& (*) \\
-    				& \sum_{i \in s} x_{i0k} = 1,  &\forall k \in \Theta 	& (*) \\
-   				& \sum_{j \in s} x_{ijk} = y_{ik}, & \forall i \in s, k \in \Theta		& (*) \\
-    				& \sum_{i \in s} x_{ijk} = y_{ik},  &\forall j \in s, k \in \Theta		& (*) \\
-    				& \sum_{k \in \Theta} y_{ik} = 1,  & \forall i \in s 	& (*) \\
-				& \sum_{i \in s} y_{ik} \leq capacity,  &\forall k \in \Theta  	& (*) \\
-    				& C_{0} = \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ij0} + U \sum_{i \in s} y_{i0} &  	& (*) \\
-    				& C_{k} = C_{k-1} + \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ijk} + U \sum_{i \in s} y_{ik}, &\forall k \in \theta 	& (*) \\
-    				& 0 \leq u_{ik} \leq M * y_{ik},  & \forall i \in s, k \in \Theta   	& (*) \\
-    				& u_{ik} + M * (1- y_{ik}) \geq C_{k-1},  & \forall i \in s, k \in \theta  	& (*)  \\
-    				& u_{ik} + M * (1- y_{ik}) \geq C_{k-1} +  A_{0,i},  & \forall i \in s, k \in \theta  	& (*)  \\
-    				& u_{i0} + M * (1- y_{i0}) \geq A_{0i}, \quad\qquad & \forall i \in s,  	& (*)  \\
-    				& u_{ik} + U + A_{ij} \leq u_{jk} + M * (1- x_{ijk}),  & \forall i,j \in s, k \in \Theta  	& (*)  \\
+	\text{minimize:}	& \text{maximize} \\{0,\ u_{ik} - U + W - D_i \\} 	&\\    
+	\text{subject to:} 	& \sum_{j \in s} x_{0jk} = 1, & \forall k \in \Theta 	\\
+    				& \sum_{i \in s} x_{i0k} = 1,  &\forall k \in \Theta 	\\
+   				& \sum_{j \in s} x_{ijk} = y_{ik}, & \forall i \in s, k \in \Theta	\\
+    				& \sum_{i \in s} x_{ijk} = y_{ik},  &\forall j \in s, k \in \Theta	\\
+    				& \sum_{k \in \Theta} y_{ik} = 1,  & \forall i \in s 	\\
+				& \sum_{i \in s} y_{ik} \leq capacity,  &\forall k \in \Theta  \\
+    				& C_{0} = \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ij0} + U \sum_{i \in s} y_{i0} \\
+    				& C_{k} = C_{k-1} + \sum_{i \in S} \sum_{j \in S} A_{ij}x_{ijk} + U \sum_{i \in s} y_{ik}, &\forall k \in \theta \\
+    				& 0 \leq u_{ik} \leq M * y_{ik},  & \forall i \in s, k \in \Theta   \\
+    				& u_{ik} + M * (1- y_{ik}) \geq C_{k-1},  & \forall i \in s, k \in \theta  \\
+    				& u_{ik} + M * (1- y_{ik}) \geq C_{k-1} +  A_{0,i},  & \forall i \in s, k \in \theta  \\
+    				& u_{i0} + M * (1- y_{i0}) \geq A_{0i}, \quad\qquad & \forall i \in s  \\
+    				& u_{ik} + U + A_{ij} \leq u_{jk} + M * (1- x_{ijk}),  & \forall i,j \in s, k \in \Theta   \\
 \end{align}
 $$
 
