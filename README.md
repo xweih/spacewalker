@@ -139,7 +139,7 @@ print(np.round(travel_times, 4))
 Showing the location of the satellites. 
 
 <img src="images/spacewalker_locations.png" width="1000" >
-
+ 
 ```javascript
 # Indices
 n_satels = len(df) - 1
